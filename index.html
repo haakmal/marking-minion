@@ -16,7 +16,7 @@
       <div>
         <div class="app-brand">
           <h1>Marking Minion</h1>
-          <span class="version-label" aria-label="Version 1.6">v1.6.2</span>
+          <span class="version-label" aria-label="Version 1.6">v1.6.5</span>
         </div>
       </div>
       <div class="header-actions">
@@ -193,7 +193,17 @@
           <div class="section-heading">
             <div>
               <p class="eyebrow">Mark</p>
-              <h2 id="markingTitle">Select a student</h2>
+              <div class="marking-student-heading">
+                <h2 id="markingTitle">Select a student</h2>
+                <div class="student-note-toolbar print-remove">
+                  <button id="studentNoteToggle" class="student-note-trigger" type="button" hidden aria-expanded="false" aria-controls="studentNotePanel" title="Add note" aria-label="Add note">
+                    <svg class="note-page-icon" aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M13 3v5h5"/><path d="m11 15 7-7 2 2-7 7-3 1z"/></svg>
+                    <span id="studentNoteToggleText">Add note</span>
+                  </button>
+                  <button id="studentNoteEdit" type="button" class="student-note-icon override-icon" title="Edit note" aria-label="Edit note" hidden>✎</button>
+                  <button id="studentNoteRemove" type="button" class="student-note-icon student-note-remove override-icon" title="Remove note" aria-label="Remove note" hidden>×</button>
+                </div>
+              </div>
             </div>
             <div aria-live="polite" class="overall-result" id="overallResult">
               <div class="result-mark-line">
@@ -236,6 +246,14 @@
           </div>
           <div class="empty-state" id="markingEmpty">Add or select a student to begin marking.</div>
           <div hidden="" id="markingContent">
+            <section id="studentNotePanel" class="student-note-panel print-remove" aria-label="Student assessment note" hidden>
+              <div id="studentNoteRead" class="student-note-read" hidden>
+                <div id="studentNoteText" class="student-note-text"></div>
+              </div>
+              <form id="studentNoteForm" class="student-note-form" hidden>
+                <textarea id="studentNoteInput" rows="5" aria-label="Assessment note or feedback" placeholder="Add a note or assessment feedback for this student…"></textarea>
+              </form>
+            </section>
             <div class="print-record-meta">
               <div><span>Class</span><strong id="printClass">—</strong></div>
               <div><span>Assessment</span><strong id="printAssignment">—</strong></div>
@@ -319,9 +337,6 @@
       </div></template
     >
     <script src="app.js"></script>
-  
-<!-- BEGIN PLAYGROUNDS UTILITY -->
-<script defer src="/assets/playgrounds-utility.js" data-playgrounds-utility data-project="marking-minion"></script>
-<!-- END PLAYGROUNDS UTILITY -->
+    
 </body>
 </html>
